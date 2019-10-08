@@ -36,31 +36,31 @@ lifecycle {
 
 # get available AZs on your AWS account 
 
-data "aws_availability_zones" "all" {}
+/* data "aws_availability_zones" "all" {}
 
-resource "aws_autoscaling_group" "example" {
-    launch_configuration = "${aws_launch_configuration.example.id}"
+#resource "aws_autoscaling_group" "example" {
+    #launch_configuration = "${aws_launch_configuration.example.id}"
     
-    # pass available AZs on your AWS account from line 39 in code 
+    #pass available AZs on your AWS account from line 39 in code 
     availability_zones = ["${data.aws_availability_zones.all.names}"]
     
     #add health check and register each elb to an EC2 instance. This is bootstrapped. 
-    load_balancers = ["{aws_elb.example.name}"]
-    health_check_type = "ELB"
+    #load_balancers = ["{aws_elb.example.name}"]
+    #health_check_type = "ELB"
 
-    min_size = 1 
-    max_size = 10
+    #min_size = 1 
+    #max_size = 10
 
-    tags =  {
-        key  = "Name"
-        value = "terraform-asg-example"
-        propogate_at_launch = true 
-    }
-}
+    #tags =  {
+      #  key  = "Name"
+      #  value = "terraform-asg-example"
+      #  propogate_at_launch = true 
+   # }
+#}
 
 # Create an elb with terraform
  resource "aws_elb" "example" {
-     name = "terraform-asg-example" 
+     name = "terraform-elb-example" 
      availability_zones = ["${data.aws_availability_zones.all.names}"]
      security_groups = ["${aws_security_group.elb.id}"]
      # Route requests to elb
@@ -103,5 +103,5 @@ resource "aws_autoscaling_group" "example" {
          protocol = "-1" 
          cidr_blocks = ["0.0.0.0/0"]
      }
- }
+ } */
  

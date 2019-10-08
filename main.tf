@@ -104,6 +104,5 @@ resource "aws_autoscaling_group" "example" {
          cidr_blocks = ["0.0.0.0/0"]
      }
  }
- output "elb_dns_name" {
-    value = "${aws_elb.example.dns_name}"
+ 
 }
